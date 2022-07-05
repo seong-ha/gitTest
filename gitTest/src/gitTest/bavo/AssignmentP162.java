@@ -11,39 +11,39 @@ public class AssignmentP162 {
 		
 		while(run) {
 			System.out.println("----------------------------------");
-			System.out.println("1. ¿¹±İ | 2. Ãâ±İ | 3. ÀÜ°í | 4. Á¾·á");
+			System.out.println("1. ì˜ˆê¸ˆ | 2. ì¶œê¸ˆ | 3. ì”ê³  | 4. ì¢…ë£Œ");
 			System.out.println("----------------------------------");
-			System.out.print("¼±ÅÃ> ");
+			System.out.print("ì„ íƒ> ");
 			
 			int menuNum = Integer.parseInt(scanner.nextLine());
 			
 			switch (menuNum) {
 				case 1:
-					System.out.print("¿¹±İ¾×> ");	
+					System.out.print("ì˜ˆê¸ˆì•¡> ");	
 					balance += Integer.parseInt(scanner.nextLine());
 					continue;
 				case 2:
-					System.out.print("Ãâ±İ¾×> ");
+					System.out.print( "ì¶œê¸ˆì•¡> ");
 					int input2 = Integer.parseInt(scanner.nextLine());
 					
 					if (balance < input2) {
-						System.out.println("ÀÜ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+						System.out.println("ì”ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 					} else {
 						balance -= input2;
 					}
 					continue;
 				case 3:
-					System.out.println("ÀÜ°í> " + balance);
+					System.out.println("ì”ê³ > " + balance);
 					continue;
 				case 4:
 					run = false;
 					break;
 				default:
-					System.out.println("¸Ş´º¸¦ Àß¸ø ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä.");
+					System.out.println("ë©”ë‰´ë¥¼ ì˜ëª» ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”.");
 			}
 		
 		}
-		System.out.println("ÇÁ·Î±×·¥ Á¾·á");
+		System.out.println("í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 	}
 
 }
