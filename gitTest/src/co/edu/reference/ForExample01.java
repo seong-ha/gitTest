@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ForExample01 {
 
 	public static void main(String[] args) {
-		int[] tempAry = new int[5];
+		int[] tempAry = new int[20];
 		for (int i = 0; i < tempAry.length; i++) {
 			tempAry[i] = (int) (Math.random() * 50) + 1;
 		}
