@@ -9,6 +9,39 @@ public class BoardApp {
 		Board[] boards = new Board[100];
 		Scanner sc = new Scanner(System.in);
 		
+		login1 : while (true) {
+			
+			System.out.print("ID를 입력하세요> ");
+			String inputId = sc.nextLine();
+			
+			System.out.print("비밀번호를 입력하세요> ");
+			String inputPasswd = sc.nextLine();
+			
+			if (inputId.equals("user01")) {
+				if (inputPasswd.equals("1212")) {
+					break;
+				} else {
+					System.out.println("비밀번호가 틀렸습니다. 다시 입력해주세요.");
+					for (int i = 0; i < 4; i++) {
+						System.out.print("비밀번호를 입력하세요> ");
+						inputPasswd = sc.nextLine();
+
+						if (inputPasswd.equals("1212")) {
+							break login1;
+						}
+					}
+					System.out.println("비밀번호를 5회 틀렸습니다. 다시 시도해주세요.");
+					continue login1;
+				}
+			} else { 
+					System.out.println("id나 비밀번호가 틀렸습니다. 다시 시도해주세요.");
+					continue;
+			}
+		}
+		
+		System.out.println("정상로그인 되었습니다.");
+		System.out.println("----------------------------");
+		
 		boolean run = true;
 		
 		while(run) {

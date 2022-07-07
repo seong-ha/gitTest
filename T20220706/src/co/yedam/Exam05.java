@@ -18,9 +18,10 @@ public class Exam05 {
 		for (int i = 0; i < fruits.length; i++) {
 			if (fruits[i].equals(input)) {
 				System.out.println("fruits[" + i + "]");
+				break;
 			} else {
 				if (i == fruits.length - 1) {
-					System.out.println("찾는 값이 없습니다.");
+					System.out.println("찾는 값이  없습니다.");
 				}
 			}
 		}
