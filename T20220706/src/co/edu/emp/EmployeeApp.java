@@ -10,6 +10,7 @@ public class EmployeeApp {
 		
 		
 		while (true) {
+			System.out.println();
 			System.out.println("1. 초기화(사원 수) | 2. 사원 입력 | 3. 리스트 |\n 4. 상세 조회 | 5. 달력보기| 9. 종료");
 			System.out.print("선택> ");
 			
