@@ -1,5 +1,6 @@
 package co.edu.emp;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 // 배열, 부서초기화, 입력, 조회, 전체출력
@@ -65,56 +66,32 @@ public class EmployeeList {
 		}
 	}
 
-	private int getLastDate(int month) {
-		switch (month) {
-			case 2: case 4: case 6: case 9: case 11:
-				return 30;
-			case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-				return 31;
-			default:
-				return 28;
-		}
-	}
-
-	private int getDayInfo(int month) {
-		switch (month) {
-			case 1:
-				return 6;
-			case 2:
-				return 2;
-			case 3:
-				return 2;
-			case 4:
-				return 5;
-			case 5:
-				return 0;
-			case 6:
-				return 3;
-			case 7:
-				return 5;
-			case 8:
-				return 1;
-			case 9:
-				return 4;
-			case 10:
-				return 6;
-			case 11:
-				return 2;
-			case 12:
-				return 4;
-			default:
-				return 0;
-		}
+	private int getLastDate(int year, int month) {
+		Calendar cal = Calendar.getInstance();
+		
+		cal.set(year, month - 1, 1);
+		
+		return cal.getActualMaximum(Calendar.DATE);
 	}
 	
+	private int getDayInfo(int year, int month) {
+		Calendar cal = Calendar.getInstance();
+		
+		cal.set(year, month - 1, 0);
+		
+		return cal.get(Calendar.DAY_OF_WEEK);
+	}
 	
 	public void showCalendar() {
+		System.out.print("년을 입력> ");
+		int year = Integer.parseInt(scn.nextLine());
+		
 		System.out.print("월을 입력> ");
 		int month = Integer.parseInt(scn.nextLine());
 		
 		String[] days = { "Sun", "Mon", "Tue", "wed", "Thu", "Fri", "Sat" };
-		int firstDay = getDayInfo(month); // 일: 0 월:1 화:2 수:3 목:4 금:5 토:6
-		int lastDay = getLastDate(month);
+		int firstDay = getDayInfo(year, month); // 일: 0 월:1 화:2 수:3 목:4 금:5 토:6
+		int lastDay = getLastDate(year, month);
 
 		for (int i = 0; i < days.length; i++) {
 			System.out.printf("%4s", days[i]);
