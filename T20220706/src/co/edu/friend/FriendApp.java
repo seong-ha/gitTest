@@ -11,8 +11,8 @@ public class FriendApp {
 
 		while (true) {
 			System.out.println();
-//			System.out.println("1. 등록 2. 조회 3. 목록 9. 종료");
-			timerShow("1.등록 2.조회 3.목록 9.종료");
+			System.out.println("1. 등록 2. 조회 3. 목록 9. 종료");
+//			timerShow("1.등록 2.조회 3.목록 9.종료");
 			System.out.print("선택> ");
 
 			int selectNo = 0;
@@ -39,7 +39,7 @@ public class FriendApp {
 
 	private void add() {
 		int count = 0;
-		
+
 		for (int i = 0; i < friends.length; i++) {
 			if (friends[i] != null) {
 				count++;
@@ -52,11 +52,11 @@ public class FriendApp {
 		}
 
 		int friendKind = 0;
-		
+
 		while (true) {
 			System.out.println("1. 학교친구 2. 회사친구 3. 친구");
 			System.out.print("친구 종류 선택> ");
-			
+
 			try {
 				friendKind = Integer.parseInt(sc.nextLine().trim());
 				if (!(friendKind == 1 || friendKind == 2 || friendKind == 3)) {
@@ -69,8 +69,6 @@ public class FriendApp {
 			}
 		}
 
-		
-		
 		System.out.print("이름> ");
 		String name = sc.nextLine();
 
@@ -104,7 +102,7 @@ public class FriendApp {
 		for (int i = 0; i < friends.length; i++) {
 			if (friends[i] != null && friends[i].getName().equals(name)) {
 				friends[i].showInfo();
-				System.out.println("조회 완료");
+				System.out.println("\n조회 완료");
 				return;
 			} else if (friends[i] == null) {
 
@@ -119,7 +117,7 @@ public class FriendApp {
 		}
 		System.out.println("전체 조회 완료");
 	}
-	
+
 	private void timerShow(String msg) {
 		String[] message = msg.split("");
 		for (int i = 0; i < message.length; i++) {
