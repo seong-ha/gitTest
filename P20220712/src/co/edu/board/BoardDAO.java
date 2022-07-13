@@ -37,7 +37,7 @@ public class BoardDAO {
 			if (board.getWriter().equals(writer)) {
 				isIn = true;
 				list.add(board);
-				System.out.println("해당 작성자가 조회되었습니다.");
+				System.out.println("해당 작성자의 글이 조회되었습니다.");
 			}
 		}
 
@@ -49,14 +49,18 @@ public class BoardDAO {
 
 	// 4. 삭제(제목)
 	public void remove(String title) {
+		boolean isIn = false;
 		for (Board board : this.list) {
 			if (board.getTitle().equals(title)) {
 				list.remove(board);
+				isIn = true;
 				System.out.println("삭제가 완료되었습니다.");
 				break;
-			} else {
-				System.out.println("해당 글이 없습니다.");
 			}
+		}
+		
+		if (!isIn) {
+			System.out.println("해당 글이 없습니다.");
 		}
 	}
 }
