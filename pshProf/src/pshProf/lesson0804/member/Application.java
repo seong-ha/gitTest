@@ -1,4 +1,4 @@
-package pshProf.member;
+package pshProf.lesson0804.member;
 
 import java.util.List;
 import java.util.Scanner;

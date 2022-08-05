@@ -1,9 +1,9 @@
-package pshProf.member;
+package pshProf.lesson0804.member;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import pshProf.common.DAO;
+import pshProf.lesson0804.common.DAO;
 
 public class Management extends DAO {
 

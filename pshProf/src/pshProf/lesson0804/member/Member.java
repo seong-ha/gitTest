@@ -1,4 +1,4 @@
-package pshProf.member;
+package pshProf.lesson0804.member;
 
 // DTO(Data Transfer Object)
 //beans
