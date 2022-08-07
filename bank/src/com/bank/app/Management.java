@@ -17,9 +17,8 @@ public class Management {
 	}
 
 	private void bankJob() {
-		menuInfo();
-
 		while (true) {
+			menuInfo(); // while문 안으로 넣어야 처음 선택한 menuNo 무한 반복를 해결할 수 있음.
 			if (MemberService.memberInfo.getRole().equals("1")) {
 				if (menuNo == 1) { // 고객 등록
 					ms.registerCustomer();

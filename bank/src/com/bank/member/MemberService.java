@@ -15,7 +15,6 @@ public class MemberService {
 		String pw = sc.nextLine();
 
 		member = MemberManage.getInstance().loginInfo(id);
-		System.out.println("탔음2");
 		// DB 조회한 정보와 내가 입력한 PW 비교
 		if (member.getMemberPw().equals(pw)) {
 			memberInfo = member;

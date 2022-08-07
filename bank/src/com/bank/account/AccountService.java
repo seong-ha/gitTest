@@ -19,7 +19,16 @@ public class AccountService {
 
 		account.setAccountId(accountId);
 		account.setMemberId(memberId);
-
+		
+/** 계좌 등록 마무리(8월 5일 9시 56분)
+		int result = AccountManage.getInstance().insertAccount(account);
+		
+		if (result == 1) {
+			System.out.println("계좌 개설 완료");
+		} else {
+			System.out.println("계좌 개설 실패");
+		}
+**/
 	}
 
 	// 2. 입출금
@@ -28,13 +37,13 @@ public class AccountService {
 		System.out.println("1. 입금 | 2. 출금");
 		System.out.print("메뉴 선택> ");
 		int cmd = Integer.parseInt(sc.nextLine());
-		System.out.print("계좌번호 입력> ");
+		System.out.print("입출금할 계좌번호 입력> ");
 		String accountId = sc.nextLine();
 
 		if (cmd == 1) { // 입금
 			System.out.println("입금할 금액 입력>");
 		} else if (cmd == 2) { // 출금
-			System.out.println("입금할 금액 입력>");
+			System.out.println("출금할 금액 입력>");
 		}
 		int money = Integer.parseInt(sc.nextLine());
 		account.setAccountId(accountId);
@@ -42,10 +51,19 @@ public class AccountService {
 
 		int result = AccountManage.getInstance().updateMoney(account, cmd);
 
-		if (result == 1 && cmd == 1) {
-			System.out.println("입금 완료");
-		} else if (result == 1 && cmd == 2) {
-			System.out.println("출금 완료");
+		// 입출금 결과에 대한 상세한 안내를 하도록 수정(8월 5일 10시 10분)
+		if (result == 1) {
+			if (cmd == 1) {
+				System.out.println("입금 완료");
+			} else if (cmd == 2) {
+				System.out.println("출금 완료");
+			}
+		} else if (result != 1) {
+			if (cmd == 1) {
+				System.out.println("입금 실패");
+			} else if (cmd == 2) {
+				System.out.println("출금 실패");
+			}
 		}
 	}
 
@@ -78,10 +96,10 @@ public class AccountService {
 		
 		System.out.println("======== 계좌 이체 ========");
 		
-		System.out.println("보내는 사람 계좌");
+		System.out.println("보내는 사람 계좌(출금될 계좌)");
 		String fromAccountId = sc.nextLine();
 		
-		System.out.println("받는 사람 계좌");
+		System.out.println("받는 사람 계좌(입금될 계좌)");
 		String toAccountId = sc.nextLine();
 		
 		System.out.println("출금 금액");

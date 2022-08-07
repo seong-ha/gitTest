@@ -9,6 +9,7 @@ public class Application {
 	MemberService ms = new MemberService();
 	Scanner sc = new Scanner(System.in);
 	int menuNo = 0;
+	
 	public Application() {
 		run();
 	}
@@ -27,6 +28,7 @@ public class Application {
 			}
 			break;
 		case 2:
+			System.out.println("프로그램 종료");
 			break;
 		}
 	}

@@ -25,7 +25,6 @@ public class MemberManage extends DAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				System.out.println("탔음.");
 				member = new Member();
 				member.setMemberId(rs.getString("member_id"));
 				member.setMemberPw(rs.getString("member_pw"));
@@ -47,7 +46,7 @@ public class MemberManage extends DAO {
 		
 		try {
 			conn();
-			String sql = "insert into bankmember (member_id, member_pw, member_name, member_role)"
+			String sql = "insert into bankmember (member_id, member_pw, member_name, role)"
 					+ " values (?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getMemberId());

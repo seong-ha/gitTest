@@ -90,7 +90,6 @@ public class AccountManage extends DAO {
 					// 나중에 함.
 				}
 			}
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,7 +124,7 @@ public class AccountManage extends DAO {
 	public void transferMoney(String toAccount, String fromAccount, int balance) {
 		int fromResult = 0;
 		int toResult = 0;
-		
+		int rollbackResult = 0;
 		try {
 			conn();
 			
@@ -150,8 +149,19 @@ public class AccountManage extends DAO {
 				
 				if (toResult == 1) {
 					System.out.println("계좌 이체 완료");
-				} else {
-					System.out.println("계좌 이체 실패");
+				} else {	// 계좌 이체 실패에 대한 복구 및 상세한 안내. 8월5일 10시31분
+					String rollbackFromSql = "update account set balance = balance + ? where account_id = ?";
+					pstmt = conn.prepareStatement(rollbackFromSql);
+					pstmt.setInt(1, balance);
+					pstmt.setString(2, fromAccount);
+					
+					rollbackResult = pstmt.executeUpdate();
+					
+					if (rollbackResult == 1) {
+						System.out.println("계좌 이체 실패: 입금 실패. 출금 복구");
+					} else {
+						System.out.println("계좌 이체 실패: 입금 실패. 출금 복구 실패. 은행에 연락바랍니다.");
+					}
 				}
 				
 			} else {
