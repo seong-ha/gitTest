@@ -1,5 +1,8 @@
 package com.bank.account;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bank.common.DAO;
 
 public class AccountManage extends DAO {
@@ -173,5 +176,35 @@ public class AccountManage extends DAO {
 		} finally {
 			disconnect();
 		}
+	}
+	
+	public List<Account> getAccountList(String memberId) {
+		List<Account> list = new ArrayList<>();
+		Account account = null;
+		
+		try {
+			conn();
+			String sql = "select * from account where member_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				account = new Account();
+				account.setAccountId(rs.getString("account_id"));
+				account.setMemberId(rs.getString("member_id"));
+				account.setCredate(rs.getDate("creDate"));
+				account.setBalance(rs.getInt("balance"));
+				list.add(account);
+			}
+			
+		} catch (Exception e) {
+				e.printStackTrace();
+		} finally {
+				disconnect();
+		}
+			
+		return list;
 	}
 }

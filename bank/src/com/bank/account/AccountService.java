@@ -1,10 +1,13 @@
 package com.bank.account;
 
+import java.util.List;
 import java.util.Scanner;
+
+import com.bank.member.MemberService;
 
 public class AccountService {
 	/*
-	 * 1. 계좌 계설 2. 입금 3. 출금 4. 계좌 해지 5. 계좌 이체
+	 * 1. 계좌 개설 2. 입금 3. 출금 4. 계좌 해지 5. 계좌 이체
 	 */
 
 	Scanner sc = new Scanner(System.in);
@@ -15,12 +18,12 @@ public class AccountService {
 		String accountId = sc.nextLine();
 
 		System.out.println("회원 ID 입력>");
-		String memberId = sc.nextLine();
+		String customId = sc.nextLine();
 
 		account.setAccountId(accountId);
-		account.setMemberId(memberId);
+		account.setMemberId(customId);
 		
-/** 계좌 등록 마무리(8월 5일 9시 56분)
+		// 계좌 등록 마무리(8월 5일 9시 56분) - 8월 8일 수업에 추가하심.
 		int result = AccountManage.getInstance().insertAccount(account);
 		
 		if (result == 1) {
@@ -28,7 +31,7 @@ public class AccountService {
 		} else {
 			System.out.println("계좌 개설 실패");
 		}
-**/
+
 	}
 
 	// 2. 입출금
@@ -106,5 +109,17 @@ public class AccountService {
 		int money = Integer.parseInt(sc.nextLine());
 		
 		AccountManage.getInstance().transferMoney(toAccountId, fromAccountId, money);
+	}
+	
+	// 계좌조회
+	public void getAccount() {
+		List<Account> list = AccountManage.getInstance().getAccountList(MemberService.memberInfo.getMemberId());
+		System.out.println(MemberService.memberInfo.getMemberName() + " 님의 계좌정보");
+		
+		for (Account account : list) {
+			System.out.println("계좌 ID: " + account.getAccountId());
+			System.out.println("잔고: " + account.getBalance());
+			System.out.println("생성일: " + account.getCredate());
+		}
 	}
 }
